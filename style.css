@@ -48,3 +48,21 @@ h5 {
     font-family: "Helvetica";
 
 }
+
+button.userlink {
+    background: none;
+    border: none;
+    font-family: "Helvetica";
+    font-size: 17px;
+}
+
+button.shovel {
+    background-color: #A9D0F5;
+    -moz-border-radius:42px;
+    -webkit-border-radius:42px;
+    border-radius:42px;
+    border:1px solid #2E64FE;
+    font-family:Arial;
+    font-size:17px;
+    padding:16px 31px;
+}

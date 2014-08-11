@@ -17,54 +17,59 @@
         var index = streams.users[user].length -1
         while(index >= 0){
           var allTweets = streams.users[user];
-          var tweet = allTweets[index]
+          var tweet = allTweets[index];
           var $tweet = $('<div class="messagebox"></div>');
-          $tweet.html('@' + '<b>' + tweet.user + ' : ' + '</b>' + tweet.message  + '<br><br/>' + '<em>' + 'Tweeted at ' + tweet.created_at + '</em>');
+          $tweet.html('@' + '<button class=userlink><b>' + tweet.user +'</b></button>' + ':  ' + tweet.message  + '<br><br/>' + '<em>' + 'Tweeted at ' + tweet.created_at + '</em>');
           $tweet.appendTo('.container');
-          index -= 1
+          index -= 1;
 
         }
+        clickbind();
       }
+
+      var clickbind = function(){
+        $('.userlink').on('click', function(){
+          clearStuff();
+          displayUser($(this).children().text());
+        });
+      };
 
       var clearStuff = function(){
         $('.messagebox').remove()
       };
 
       var displayAll = function(){
-        var $body = $('body');
+        console.log('display all runs')
+        //var $body = $('body');
         //$body.html(''); //Why is this even here. Come on.
         var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
           var $tweet = $('<div class="messagebox"></div>');
-          $tweet.html('@' + '<b>' + tweet.user + ' : ' + '</b>' + tweet.message  + '<br><br/>' + '<em>' + 'Tweeted at ' + tweet.created_at + '</em>');
+          $tweet.html('@' + '<button class=userlink><b>' + tweet.user +'</b></button>' + ': ' + tweet.message  + '<br><br/>' + '<em>' + 'Tweeted at ' + tweet.created_at + '</em>');
           $tweet.appendTo('.container');
           index -= 1;
         }
+
+        clickbind();
       }
 
       $(document).ready(function(){
+        displayAll();
+
+        $('.shovel').click(function(){
+          clearStuff();
           displayAll();
 
-          $('.shovel').click(function(){
-            clearStuff();
-            displayAll();
-          });
-
-          $('.test').click(function(){
-            clearStuff();
-            displayUser('mracus');
-          });
-        }
-      );
+        });
+      });
 
     </script>
 
     <h1> Twittler </h1>
     <h3> A littler twitter </h3>
     <h5><em> for all your copyright infringment needs </em></h5>
-    <button class="shovel">Shovel More Tweets At Me!</button>
-    <button class="test">testing</button>
+    <button class="shovel">Shovel More Twits At Me!</button>
     <br></br>
     <div class='container'>
 
