@@ -14,12 +14,11 @@
       $(document).ready(function(){
         var $body = $('body');
         //$body.html('');
-
         var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
           var $tweet = $('<div id="messagebox"></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
+          $tweet.html('@' + '<b>' + tweet.user + ' : ' + '</b>' + tweet.message  + '<br><br/>' + '<em>' + 'Tweeted at ' + tweet.created_at + '</em>');
           $tweet.appendTo('.container');
           index -= 1;
         }
@@ -30,7 +29,8 @@
 
     <h1> Twittler </h1>
     <h3> A littler twitter </h3>
-    <button class="send">Tweet At Me!</button>
+    <h5><em> for all your copyright infringment needs </em></h5>
+    <button class="send">Shovel More Tweets At Me!</button>
     <div class='container'>
 
     </div>
