@@ -11,6 +11,8 @@
 
     <script>
 
+    // build a buildTweet function, abstract. smoosh together display functions. have a party.
+
       var displayUser = function(user){
         clearStuff();
 
@@ -19,20 +21,13 @@
           var allTweets = streams.users[user];
           var tweet = allTweets[index];
           var $tweet = $('<div class="messagebox"></div>');
-          $tweet.html('@' + '<button class=userlink><b>' + tweet.user +'</b></button>' + ':  ' + tweet.message  + '<br><br/>' + '<em>' + 'Tweeted at ' + tweet.created_at + '</em>');
+          var date = tweet.created_at.toDateString();
+          $tweet.html('@' + '<button class=userlink><b>' + tweet.user +'</b></button>' + ': ' + tweet.message  + '<br><br/>' + '<em>' + 'Tweeted at ' + date + '</em>');
           $tweet.appendTo('.container');
           index -= 1;
 
         }
-        clickbind();
       }
-
-      var clickbind = function(){
-        $('.userlink').on('click', function(){
-          clearStuff();
-          displayUser($(this).children().text());
-        });
-      };
 
       var clearStuff = function(){
         $('.messagebox').remove()
@@ -46,12 +41,11 @@
         while(index >= 0){
           var tweet = streams.home[index];
           var $tweet = $('<div class="messagebox"></div>');
-          $tweet.html('@' + '<button class=userlink><b>' + tweet.user +'</b></button>' + ': ' + tweet.message  + '<br><br/>' + '<em>' + 'Tweeted at ' + tweet.created_at + '</em>');
+          var date = tweet.created_at.toDateString();
+          $tweet.html('@' + '<button class=userlink><b>' + tweet.user +'</b></button>' + ': ' + tweet.message  + '<br><br/>' + '<em>' + 'Tweeted at ' + date + '</em>');
           $tweet.appendTo('.container');
           index -= 1;
         }
-
-        clickbind();
       }
 
       $(document).ready(function(){
@@ -60,7 +54,11 @@
         $('.shovel').click(function(){
           clearStuff();
           displayAll();
+        });
 
+        $('.container').on('click', '.userlink', function(){
+          clearStuff();
+          displayUser($(this).children().text());
         });
       });
 
