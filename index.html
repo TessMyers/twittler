@@ -11,10 +11,20 @@
 
     <script>
 
-      // var displayUser = function(user){
-      //   clearStuff();
+      var displayUser = function(user){
+        clearStuff();
 
-      // }
+        var index = streams.users[user].length -1
+        while(index >= 0){
+          var allTweets = streams.users[user];
+          var tweet = allTweets[index]
+          var $tweet = $('<div class="messagebox"></div>');
+          $tweet.html('@' + '<b>' + tweet.user + ' : ' + '</b>' + tweet.message  + '<br><br/>' + '<em>' + 'Tweeted at ' + tweet.created_at + '</em>');
+          $tweet.appendTo('.container');
+          index -= 1
+
+        }
+      }
 
       var clearStuff = function(){
         $('.messagebox').remove()
@@ -40,6 +50,11 @@
             clearStuff();
             displayAll();
           });
+
+          $('.test').click(function(){
+            clearStuff();
+            displayUser('mracus');
+          });
         }
       );
 
@@ -49,6 +64,7 @@
     <h3> A littler twitter </h3>
     <h5><em> for all your copyright infringment needs </em></h5>
     <button class="shovel">Shovel More Tweets At Me!</button>
+    <button class="test">testing</button>
     <br></br>
     <div class='container'>
 
