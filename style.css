@@ -1,17 +1,17 @@
 body {
-    background-color: #2E9AFE;
+    background-color: #3A88C9;
     font-family: Helvetica, Arial, sans-serif;
 }
 
 h1 {
-    color: orange;
+    color: #EF8A1D;
     text-align: center;
     font-size: 50pt;
     margin-bottom: 0px;
 }
 
 h3 {
-    color: orange;
+    color: #D47B1B;
     text-align: center;
     margin-bottom: 0px;
     margin-top: 0px;
@@ -19,7 +19,7 @@ h3 {
 }
 
 h5 {
-    color: orange;
+    color: #D47B1B;
     text-align: center;
     margin-bottom: 5px;
     margin-top: 5px;
@@ -40,6 +40,7 @@ h5 {
     margin-left:20%;
     margin-right:20%;
     text-align: center;
+    border-radius: 10px;
 }
 
 .messagebox {
@@ -51,9 +52,47 @@ h5 {
     background-color: #A9D0F5;
     margin-left:15%;
     text-align: left;
-    -webkit-box-shadow: 0 10px 6px -6px #5882FA;
-    -moz-box-shadow: 0 10px 6px -6px #5882FA;
-    box-shadow: 0 10px 6px -6px #5882FA;
+    -webkit-box-shadow: 0 10px 6px -6px #6192BA;
+    -moz-box-shadow: 0 10px 6px -6px #6192BA;
+    box-shadow: 0 10px 6px -6px #6192BA;
+    border-radius: 10px;
+}
+
+.entryBox {
+    margin: 30px;
+    border: 5px solid #EF8A1D;
+    padding: 10px;
+    padding-left: 20px;
+    width: 600px;
+    background-color: #A9D0F5;
+    margin-left:11.5%;
+    text-align: left;
+    -webkit-box-shadow: 0 10px 6px -6px #6192BA;
+    -moz-box-shadow: 0 10px 6px -6px #6192BA;
+    box-shadow: 0 10px 6px -6px #6192BA;
+    border-radius: 10px;
+}
+
+.draft {
+    padding: 10px;
+    font-size: 12px;
+    margin: 12px
+}
+
+
+button.send {
+    background-color: #A9D0F5;
+    -moz-border-radius:42px;
+    -webkit-border-radius:42px;
+    border-radius:42px;
+    border:1px solid #6192BA;
+    font-family:Arial;
+    font-size:16px;
+    padding:16px 31px;
+    box-shadow: 3px 3px #6192BA;
+    vertical-align: 33px;
+
+
 }
 
 button.userlink {
@@ -71,5 +110,11 @@ button.shovel {
     font-family:Arial;
     font-size:16px;
     padding:16px 31px;
-    box-shadow: 3px 3px #0080FF;
+    box-shadow: 3px 3px #3476AC;
+}
+
+div#prompt {
+    margin: 1px;
+    margin-left: 15px;
+    margin-top: 20px;
 }
