@@ -20,18 +20,24 @@ h5 {
     text-align: center;
 }
 
+.shovel {
+    margin-left:20%;
+}
+
 
 .container {
         width: 800px;
         padding: 10px;
+        border: 1px solid #2E64FE;
         background-color: #58ACFA;
         margin-left:20%;
         margin-right:20%;
         text-align: center;
     }
 
-div#messagebox {
+.messagebox {
     margin: 30px;
+    border: 1px solid #5882FA;
     padding: 10px;
     padding-left: 20px;
     /*border: 10px outset #81BEF7;*/
