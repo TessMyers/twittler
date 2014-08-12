@@ -10,6 +10,9 @@
   <body>
 
     <script>
+  // TODO: 
+  // capitalize the damn tweets
+  // show when tweets were created
 
       var clearStuff = function(){
         $('.messagebox').remove()
@@ -34,6 +37,12 @@
 
       var USER = prompt("Welcome! What's your Twittler handle?");
 
+      var greet = function(){
+        var $greeting = $('<b></b>')
+        $greeting.html('Hello '+ USER +'! Got something brilliant to say? Share it with world');
+        $greeting.appendTo('#prompt');
+      }
+
       var twit = function(text){
         var source = [];
         var newTweet = {
@@ -43,12 +52,12 @@
         }
         source.push(newTweet);
         makeTweet(0, source);
-
+        $('.draft').val('')
       }
 
 
       var makeTweet = function(index, source){
-        var appendMethod = index === 0 ? '.prependTo' : '.appendTo';
+        var appendMethod = index === 0 ? '.prependTo' : '.appendTo'; //$tweet.appendTo('.twits')
         appendMethod = '$tweet' + appendMethod + "('.twits')"
 
         while(index >= 0){
@@ -63,6 +72,7 @@
 
       $(document).ready(function(){
         displayAll();
+        greet();
         $('.shovel').click(function(){
           clearStuff();
           displayAll();
@@ -90,7 +100,7 @@
 
       <div class=entryBox>
 
-        <div id=prompt><b>Got something brilliant to say? Share it with world</b></div>
+        <div id=prompt></div>
         <textarea class="draft" rows=2 cols=60></textarea>
         <button class="send">Twit it!</button>
 
