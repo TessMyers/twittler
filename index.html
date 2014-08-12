@@ -11,46 +11,58 @@
 
     <script>
 
-    // build a buildTweet function, abstract. smoosh together display functions. have a party.
+      var clearStuff = function(){
+        $('.messagebox').remove()
+      };
 
       var displayUser = function(user){
         clearStuff();
 
         var index = streams.users[user].length -1
-        while(index >= 0){
-          var allTweets = streams.users[user];
-          var tweet = allTweets[index];
-          var $tweet = $('<div class="messagebox"></div>');
-          var date = tweet.created_at.toDateString();
-          $tweet.html('@' + '<button class=userlink><b>' + tweet.user +'</b></button>' + ': ' + tweet.message  + '<br><br/>' + '<em>' + 'Tweeted at ' + date + '</em>');
-          $tweet.appendTo('.container');
-          index -= 1;
+        var allTweets = streams.users[user];
+        var source = allTweets;
 
-        }
+        makeTweet(index, source);
       }
 
-      var clearStuff = function(){
-        $('.messagebox').remove()
-      };
-
       var displayAll = function(){
-        console.log('display all runs')
-        //var $body = $('body');
-        //$body.html(''); //Why is this even here. Come on.
         var index = streams.home.length - 1;
+        var source = streams.home;
+
+        makeTweet(index, source)
+      }
+
+      var USER = prompt("Welcome! What's your Twittler handle?");
+
+      var twit = function(text){
+        var source = [];
+        var newTweet = {
+          user: USER,
+          message: text,
+          created_at: new Date()
+        }
+        source.push(newTweet);
+        makeTweet(0, source);
+
+      }
+
+
+      var makeTweet = function(index, source){
+        var appendMethod = index === 0 ? '.prependTo' : '.appendTo';
+        appendMethod = '$tweet' + appendMethod + "('.twits')"
+
         while(index >= 0){
-          var tweet = streams.home[index];
+          var tweet = source[index];
           var $tweet = $('<div class="messagebox"></div>');
           var date = tweet.created_at.toDateString();
           $tweet.html('@' + '<button class=userlink><b>' + tweet.user +'</b></button>' + ': ' + tweet.message  + '<br><br/>' + '<em>' + 'Tweeted at ' + date + '</em>');
-          $tweet.appendTo('.container');
+          eval(appendMethod);
           index -= 1;
         }
       }
 
       $(document).ready(function(){
         displayAll();
-
         $('.shovel').click(function(){
           clearStuff();
           displayAll();
@@ -60,22 +72,31 @@
           clearStuff();
           displayUser($(this).children().text());
         });
+
+        $('.send').on('click', function(){
+          twit($(".draft").val());
+        });
+
       });
 
     </script>
 
     <h1> Twittler </h1>
     <h3> A littler twitter </h3>
-    <h5><em> for all your copyright infringment needs </em></h5>
+    <h5><em> "for all your copyright infringment needs" </em></h5>
     <button class="shovel">Shovel More Twits At Me!</button>
     <br></br>
     <div class='container'>
+
       <div class=entryBox>
+
         <div id=prompt><b>Got something brilliant to say? Share it with world</b></div>
         <textarea class="draft" rows=2 cols=60></textarea>
         <button class="send">Twit it!</button>
+
       </div>
 
+      <div class=twits></div>
 
     </div>
 
