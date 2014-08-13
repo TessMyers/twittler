@@ -10,9 +10,6 @@
   <body>
 
     <script>
-  // TODO: 
-  // capitalize the damn tweets
-  // show when tweets were created
 
       var clearStuff = function(){
         $('.messagebox').remove()
@@ -57,7 +54,7 @@
 
 
       var makeTweet = function(index, source){
-        var appendMethod = index === 0 ? '.prependTo' : '.appendTo'; //$tweet.appendTo('.twits')
+        var appendMethod = index === 0 ? '.prependTo' : '.appendTo';
         appendMethod = '$tweet' + appendMethod + "('.twits')"
 
         while(index >= 0){
